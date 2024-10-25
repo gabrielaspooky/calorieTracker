@@ -1,5 +1,13 @@
 import React from 'react';
-import { Dialog } from './ui/Dialog'; // Asegúrate de crear este componente de diálogo.
+import { Dialog } from './ui/Dialog'; 
+import { Select, SelectItem } from "@nextui-org/react";
+
+const mealTypes = [
+    { value: "breakfast", label: "Breakfast" },
+    { value: "lunch", label: "Lunch" },
+    { value: "dinner", label: "Dinner" },
+    { value: "snack", label: "Snack" },
+  ];
 
 export default function MealDialog({ isOpen, onClose, newMeal, setNewMeal, addMeal, setImagePreview, imagePreview }) {
   const handleImageUpload = (e) => {
@@ -19,19 +27,55 @@ export default function MealDialog({ isOpen, onClose, newMeal, setNewMeal, addMe
         <input className="block border rounded p-2 mb-4" placeholder="Meal Name" value={newMeal.name} onChange={e => setNewMeal({ ...newMeal, name: e.target.value })} />
         <label>Calories</label>
         <input type="number" className="block border rounded p-2 mb-4" placeholder="Calories (kcal)" value={newMeal.kcal} onChange={e => setNewMeal({ ...newMeal, kcal: parseFloat(e.target.value) || 0 })} />
+        
+        
         <label>Meal Type</label>
-        <select className="block border rounded p-2 mb-4" value={newMeal.mealType} onChange={e => setNewMeal({ ...newMeal, mealType: e.target.value })}>
-          <option value="breakfast">Breakfast</option>
-          <option value="lunch">Lunch</option>
-          <option value="dinner">Dinner</option>
-          <option value="snack">Snack</option>
-        </select>
-        <label>Upload Image</label>
-        <input type="file" accept="image/*" onChange={handleImageUpload} />
-        {imagePreview && <img src={imagePreview} alt="Preview" className="w-full h-auto mt-4 rounded-md" />}
-      </div>
-      <div className="flex justify-end">
-        <button onClick={addMeal} className="bg-blue-500 text-white rounded p-2">Add Meal</button>
+
+
+        <Select
+  value={newMeal.mealType}
+  onChange={(value) => setNewMeal({ ...newMeal, mealType: value })}
+  className="block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 mb-4 max-w-xs transition duration-200 ease-in-out"
+>
+  {mealTypes.map((mealType) => (
+    <SelectItem className="cursor:pointer" key={mealType.value} value={mealType.value}>
+      {mealType.label}
+    </SelectItem>
+  ))}
+</Select>
+
+<br />
+
+
+<div className="mb-6">
+  <label className="block text-gray-700 font-semibold mb-2">
+Sube la etiqueta nutricional
+  </label>
+  <input
+    type="file"
+    accept=".png, .jpg, .jpeg"
+    onChange={handleImageUpload}
+    className="block w-full text-sm text-gray-500 
+               file:mr-4 file:py-2 file:px-4 
+               file:rounded-md file:border-0 
+               file:text-sm file:font-semibold 
+               file:bg-blue-100 file:text-blue-700 
+               hover:file:bg-blue-200 transition duration-200"
+  />
+  {imagePreview && (
+    <img
+      src={imagePreview}
+      alt="Preview"
+      className="mt-4 w-full h-auto rounded-md shadow-lg"
+    />
+  )}
+</div>
+<div className="flex justify-end">
+
+</div>
+       
+       
+        <button onClick={addMeal} className="bg-blue-500 text-white rounded p-2">Añadir comida</button>
       </div>
     </Dialog>
   );

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import CalorieDisplay from '../components/CalorieDisplay';
 import MealDialog from '../components/MealDialog';
 import MealList from '../components/MealList';
-import Button from "../components/ui/Button"; // Crea este componente para manejar botones.
+import Button from "../components/ui/Button"; 
 
 export default function CalorieTamagotchi() {
   const [calorieGoal, setCalorieGoal] = useState(2000);

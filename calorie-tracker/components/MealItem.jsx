@@ -1,4 +1,5 @@
 import React from 'react';
+import { Trash2 } from 'lucide-react';
 
 export default function MealItem({ meal, removeMeal }) {
   return (
@@ -10,7 +11,9 @@ export default function MealItem({ meal, removeMeal }) {
           <p className="text-sm text-gray-600">{meal.kcal} kcal</p>
         </div>
       </div>
-      <button onClick={() => removeMeal(meal.id)} className="bg-red-500 text-white rounded p-2">Remove</button>
+      <button onClick={() => removeMeal(meal.id)} className="bg-red-500 text-white rounded p-2">
+      <Trash2 />
+      </button>
     </div>
   );
 }
