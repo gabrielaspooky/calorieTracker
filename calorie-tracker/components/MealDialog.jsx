@@ -3,10 +3,10 @@ import { Dialog } from './ui/Dialog';
 import { Select, SelectItem } from "@nextui-org/react";
 
 const mealTypes = [
-    { value: "breakfast", label: "Breakfast" },
-    { value: "lunch", label: "Lunch" },
-    { value: "dinner", label: "Dinner" },
-    { value: "snack", label: "Snack" },
+    { value: "desayuno", label: "Desayuno" },
+    { value: "almuerzo", label: "Almuerzo" },
+    { value: "cena", label: "Cena" },
+    { value: "merienda", label: "Merienda" },
   ];
 
 export default function MealDialog({ isOpen, onClose, newMeal, setNewMeal, addMeal, setImagePreview, imagePreview }) {
@@ -22,14 +22,16 @@ export default function MealDialog({ isOpen, onClose, newMeal, setNewMeal, addMe
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <div className="p-4">
-        <h3 className="text-lg font-bold mb-4">Add a New Meal</h3>
-        <label>Name</label>
-        <input className="block border rounded p-2 mb-4" placeholder="Meal Name" value={newMeal.name} onChange={e => setNewMeal({ ...newMeal, name: e.target.value })} />
-        <label>Calories</label>
-        <input type="number" className="block border rounded p-2 mb-4" placeholder="Calories (kcal)" value={newMeal.kcal} onChange={e => setNewMeal({ ...newMeal, kcal: parseFloat(e.target.value) || 0 })} />
+        <h3 className="text-lg font-bold mb-4">
+        Añade una nueva comida
+        </h3>
+        <label>¿Qué has comido?</label>
+        <input className="block border rounded p-2 mb-4" placeholder="Nombre de la comida" value={newMeal.name} onChange={e => setNewMeal({ ...newMeal, name: e.target.value })} />
+        <label>Calorias</label>
+        <input type="number" className="block border rounded p-2 mb-4" placeholder="Kcal" value={newMeal.kcal} onChange={e => setNewMeal({ ...newMeal, kcal: parseFloat(e.target.value)})} />
         
         
-        <label>Meal Type</label>
+        <label>Tipo de comida</label>
 
 
         <Select
