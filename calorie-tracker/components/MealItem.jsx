@@ -32,7 +32,6 @@ export default function MealItem({ meal, removeMeal }) {
       </div>
       <button onClick={() => removeMeal(meal.id)} className="bg-red-500 text-white rounded p-2 flex items-center">
         <Trash2 className="mr-1" /> 
-        Eliminar
       </button>
     </div>
   );
