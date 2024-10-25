@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/CalorieTamagotchi.jsx", "app/page.jsx", "components/ui/dialog.jsx", "components/ui/dialog.jsx"],
   "exclude": ["node_modules"]
 }
